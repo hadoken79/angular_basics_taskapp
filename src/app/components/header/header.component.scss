@@ -1,0 +1,9 @@
+@import 'src/styles.scss'; //just testing the import for variables which are globaly defined. here in styles.scss
+
+header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    background-color: $bg; //this is the variable
+}
