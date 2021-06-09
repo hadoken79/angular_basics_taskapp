@@ -9,18 +9,27 @@ import { faTimes } from '@fortawesome/free-solid-svg-icons';
   templateUrl: './task-item.component.html',
   styleUrls: ['./task-item.component.scss']
 })
+
+
 export class TaskItemComponent implements OnInit {
   @Input() task: Task;
   @Output() onDeleteTask: EventEmitter<Task> = new EventEmitter();
+  @Output() onUpdateTask: EventEmitter<Task> = new EventEmitter();
   faTimes = faTimes;
 
   constructor() { }
 
   ngOnInit(): void {
+    
   }
 
-  onDelete = (task): void => {
+  onDelete = (task: Task): void => {
     this.onDeleteTask.emit(task);
   };
+
+  onDoubleClick = (task: Task): void => {
+    this.task.reminder = !this.task.reminder;
+    this.onUpdateTask.emit(task);
+  }
 
 }

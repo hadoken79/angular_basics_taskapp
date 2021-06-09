@@ -22,5 +22,10 @@ export class TasksComponent implements OnInit {
     });
   }
 
+  updateTask = (task: Task) => {
+    this.tasks.map(t => t.id !== task.id ? task : t); //edit local array first
+    this.taskservice.updateTask(task).subscribe(() => this.initTasks());
+  }
+
   initTasks = () => this.taskservice.getTasks().subscribe(tasks => this.tasks = tasks);
 }
