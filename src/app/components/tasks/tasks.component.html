@@ -1,7 +1,11 @@
+<app-add-task 
+(onAddTask)=addTask($event)> <!--because task is not defined here (in elem below its in the loop) we use event wildcard-->
+</app-add-task>
+
 <app-task-item 
 *ngFor='let task of tasks' [task]=task 
 (onDeleteTask)=deleteTask(task)
-(onUpdateTask)=updateTask(task)
-></app-task-item>
+(onToggleReminder)=toggleRminder(task)>
+</app-task-item>
 
    

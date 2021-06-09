@@ -22,10 +22,21 @@ export class TasksComponent implements OnInit {
     });
   }
 
-  updateTask = (task: Task) => {
-    this.tasks.map(t => t.id !== task.id ? task : t); //edit local array first
-    this.taskservice.updateTask(task).subscribe(() => this.initTasks());
+  toggleRminder = (task: Task) => {
+    task.reminder = !task.reminder;
+    this.taskservice.updateTask(task).subscribe(() => this.initTasks(), error => {
+      console.log({'Trouble in UpdateTask': error});
+    });
   }
 
-  initTasks = () => this.taskservice.getTasks().subscribe(tasks => this.tasks = tasks);
+  initTasks = () => this.taskservice.getTasks().subscribe(tasks => {
+    this.tasks = tasks
+  }, error => console.log(error));
+
+  addTask = (task: Task) => {
+    this.taskservice.addTask(task).subscribe(task => this.tasks.push(task), error => {
+      console.log({'Trouble in addTask': error});
+    })
+  }
 }
+
