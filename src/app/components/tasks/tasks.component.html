@@ -1,4 +1,5 @@
 <app-add-task 
+*ngIf="showAddTask"
 (onAddTask)=addTask($event)> <!--because task is not defined here (in elem below its in the loop) we use event wildcard-->
 </app-add-task>
 

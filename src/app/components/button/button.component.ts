@@ -18,7 +18,7 @@ export class ButtonComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  myClickFunc():void {
+  onClick():void {
     this.btnClick.emit(true);
   }
 
